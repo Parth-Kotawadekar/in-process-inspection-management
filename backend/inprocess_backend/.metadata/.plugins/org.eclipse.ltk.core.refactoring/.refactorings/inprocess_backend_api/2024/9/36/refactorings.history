@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;inprocess_backend_api&apos;&#x0D;&#x0A;- Original project: &apos;inprocess_backend_api&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     static&#x0D;&#x0A;     aqslogo.jpg&#x0D;&#x0A;     asset-manifest.json&#x0D;&#x0A;     index.html&#x0D;&#x0A;     manifest.json&#x0D;&#x0A;     robots.txt" description="Delete elements" element1="src/main/resources/static/static" element2="src/main/resources/static/index.html" element3="src/main/resources/static/manifest.json" element4="src/main/resources/static/robots.txt" element5="src/main/resources/static/asset-manifest.json" element6="src/main/resources/static/aqslogo.jpg" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="6" stamp="1725376693957" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,94 @@
+package com.api_lcms.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api_lcms.dto.UserDTO;
+import com.api_lcms.model.Customer;
+import com.api_lcms.model.Employee;
+import com.api_lcms.model.User;
+import com.api_lcms.repository.CustomerRepository;
+import com.api_lcms.repository.EmployeeRepository;
+import com.api_lcms.repository.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository repository;
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Autowired
+	private CustomerRepository customerRepository;
+
+	public List<User> allUsers(){
+		return repository.findAll();
+	}
+
+	public UserDTO getUserById(Integer id) {
+		User user = repository.findById(id).orElse(null);
+	    if (user != null) {
+	        // Convert User entity to UserDTO
+	        UserDTO userDTO = new UserDTO();
+	        userDTO.setId(user.getId());
+	        userDTO.setUsername(user.getUsername());
+	        userDTO.setEmp_id(user.getEmployee() != null ? user.getEmployee().getEmp_id() : null);
+	        userDTO.setCust_id(user.getCustomer() != null ? user.getCustomer().getCust_id() : null);
+	        // Set other fields as needed
+	        return userDTO;
+	    }
+	    return null;
+	}
+	
+	public User createUser(UserDTO userdto) {
+
+		Employee employee = employeeRepository.findById(userdto.getEmp_id())
+			.orElseThrow(() -> new RuntimeException("Employee id null"));
+		Customer customer = customerRepository.findById(userdto.getCust_id())
+			.orElseThrow(() -> new RuntimeException("Customer id null"));
+
+		try {
+
+			User user = new User();
+			user.setUsername(userdto.getUsername());
+			user.setPassword(userdto.getPassword());
+			user.setEmployee(employee);
+			user.setCustomer(customer);
+
+			return repository.save(user);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public UserDTO validateUser(String username, String password) {
+	    User user = repository.findByUsername(username);
+	    if (user != null && user.getPassword().equals(password)) {
+	        UserDTO userDTO = new UserDTO();
+	        userDTO.setId(user.getId());
+	        userDTO.setUsername(user.getUsername());
+	        userDTO.setPassword(user.getPassword());
+	        userDTO.setRole(user.getRole());
+	        
+	        // Set employee ID if available
+	        if (user.getEmployee() != null) {
+	            userDTO.setEmp_id(user.getEmployee().getEmp_id());
+	        }
+	        
+	        // Set customer ID if available
+	        if (user.getCustomer() != null) {
+	            userDTO.setCust_id(user.getCustomer().getCust_id());
+	        }
+	        return userDTO;
+	    }
+	    return null;
+	}
+
+
+}

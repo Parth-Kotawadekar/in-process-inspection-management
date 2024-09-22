@@ -1,0 +1,23 @@
+package com.api_lcms.service;
+
+public class AuthorityDTO {
+    private Integer authorityId;
+    private String status; // Status could be "create", "read", "update", etc.
+
+    // Getters and Setters
+    public Integer getAuthorityId() {
+        return authorityId;
+    }
+
+    public void setAuthorityId(Integer authorityId) {
+        this.authorityId = authorityId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+}

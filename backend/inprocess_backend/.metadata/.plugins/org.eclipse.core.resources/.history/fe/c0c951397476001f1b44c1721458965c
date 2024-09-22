@@ -1,0 +1,116 @@
+package com.api_lcms.service;
+
+import java.io.IOException;
+import java.sql.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import com.api_lcms.dto.DatasheetDTO;
+import com.api_lcms.model.Customer;
+import com.api_lcms.model.Datasheet;
+import com.api_lcms.model.Employee;
+import com.api_lcms.model.GaugeMaster;
+import com.api_lcms.repository.DatasheetRepository;
+import com.api_lcms.repository.EmployeeRepository;
+import com.api_lcms.repository.GaugeMasterRepository;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.http.HttpServletResponse;
+
+@Service
+public class DatasheetService {
+
+	@Autowired
+	private DatasheetRepository dataRepo;
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Autowired
+	private GaugeMasterRepository gaugeMasterRepository;
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	public List<Datasheet> showAll(){
+		return dataRepo.findAll();
+	}
+
+	public Datasheet getDatasheet(Integer datasheet_id) {
+		return dataRepo.findById(datasheet_id).orElse(null);
+	}
+
+	public Datasheet saveDatasheet(DatasheetDTO datasheetDTO, HttpServletResponse response) throws IOException {
+
+		try {
+			GaugeMaster gaugeMaster = gaugeMasterRepository.findById(datasheetDTO.getGauge_id())
+					.orElseThrow(() -> new RuntimeException("Gauge Master Not Found"));
+			Employee employee = employeeRepository.findById(datasheetDTO.getEmp_id())
+					.orElseThrow(() -> new RuntimeException("Employee not found"));
+			Customer customer = 
+
+					try {
+						Datasheet datasheet = new Datasheet();
+
+						datasheet.setCalibration_date(datasheetDTO.getCalibration_date());
+						datasheet.setCalibration_frequency(datasheetDTO.getCalibration_frequency());
+						datasheet.setCalibration_place(datasheetDTO.getCalibration_place());
+						datasheet.setCertificate_no(datasheetDTO.getCertificate_no());
+						datasheet.setDate_of_reciept(datasheetDTO.getDate_of_reciept());
+						datasheet.setFrequency_type(datasheetDTO.getFrequency_type());
+						datasheet.setIdentification_marked_by(datasheetDTO.getIdentification_marked_by());
+						datasheet.setIssue_date(datasheetDTO.getIssue_date());
+						datasheet.setNext_calibration_date(datasheetDTO.getNext_calibration_date());
+						datasheet.setRef_dc_no(datasheetDTO.getRef_dc_no());
+						datasheet.setUlr_no(datasheetDTO.getUlr_no());
+						datasheet.setDoc_no(datasheetDTO.getDoc_no());
+						datasheet.setRev_no(datasheetDTO.getRev_no());
+						datasheet.setName_of_customer(datasheetDTO.getName_of_customer());
+						datasheet.setGaugeMaster(gaugeMaster);
+						datasheet.setEmployee(employee);
+//						datasheet.setCheckpointMaster(checkpointMaster);
+//						datasheet.setReportingMaster(reportinghMaster);
+
+						Datasheet savedDatasheet = dataRepo.save(datasheet);
+
+						sendEmailToEmployee(employee.getEmail(), employee.getFirst_name() + " " + employee.getLast_name() ,gaugeMaster.getGauge_name() + " " + gaugeMaster.getGauge_sr_no(), datasheetDTO.getCalibration_date());
+
+						return dataRepo.save(datasheet);
+					} catch (Exception ex) {
+						ex.printStackTrace();
+						throw new RuntimeException("Cannot save datasheet" + ex.getMessage());
+					}
+		}catch (Exception e) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("Error generating report: " + e.getMessage());
+            e.printStackTrace();
+		}
+		return null;
+	}
+
+	private void sendEmailToEmployee(String to, String employeeName, String gaugeName, Date date) {
+		MimeMessage message = mailSender.createMimeMessage();
+
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true);
+			helper.setTo(to);
+			helper.setSubject("Datasheet Certificate Created");
+			helper.setText("Dear "+ employeeName + ",\n\nYour Part: " + gaugeName + " for Inspection is created successfully on: " + date + "\n\nBest Regards,\nAarush Quality Services");
+
+			mailSender.send(message);
+		}catch (MessagingException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Failed to send email: " + e.getMessage());
+		}
+	}
+
+
+	public void deleteDatasheet(Integer id) {
+		dataRepo.deleteById(id);
+	}
+}

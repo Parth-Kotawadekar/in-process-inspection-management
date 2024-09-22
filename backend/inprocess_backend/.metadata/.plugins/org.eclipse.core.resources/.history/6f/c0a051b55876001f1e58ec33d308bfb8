@@ -1,0 +1,11 @@
+package com.api_lcms.dto;
+
+import com.api_lcms.model.Employee;
+
+public class AuthorityDTO {
+	
+	private Integer id;
+	private String description;
+	private String status;
+	private Employee employee;
+}

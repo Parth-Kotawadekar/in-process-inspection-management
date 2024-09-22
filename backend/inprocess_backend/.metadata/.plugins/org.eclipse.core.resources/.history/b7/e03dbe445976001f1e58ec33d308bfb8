@@ -1,0 +1,59 @@
+package com.api_lcms.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api_lcms.model.Authority;
+import com.api_lcms.model.Employee;
+import com.api_lcms.repository.AuthorityRepository;
+import com.api_lcms.repository.EmployeeRepository;
+
+@Service
+public class AuthorityService {
+
+	@Autowired
+	private AuthorityRepository authorityRepository;
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	public List<Authority> getAllAuthorities(){
+		return authorityRepository.findAll();
+	}
+	
+	public List<Authority> getEmployeeAuthorities(Integer employeeId){
+		return authorityRepository
+	}
+
+	public Authority assignAuthorityToEmployee(Integer emp_id, Integer auth_id, String status) {
+
+		Employee employeeOpt = employeeRepository.findById(emp_id)
+				.orElseThrow(() -> new RuntimeException("Employee Id Not Found"));
+		
+
+		Authority authority = new Authority();
+		authority.setEmployee(employeeOpt);
+		authority.setId(auth_id);
+		authority.setStatus(status);
+		
+		return authorityRepository.save(authority);
+		
+	}
+
+	public Authority revokeAuthorityFromEmployee(Integer emp_id, Integer auth_id) {
+		Optional<Authority> authorityOpt = authorityRepository.findById(auth_id);
+
+		if(authorityOpt.isPresent()) {
+			Authority authority = authorityOpt.get();
+            if (authority.getEmployee() != null && authority.getEmployee().getEmp_id().equals(emp_id)) {
+                authority.setEmployee(null);
+                authorityRepository.save(authority);
+            }
+		}
+
+		return null;
+	}
+}

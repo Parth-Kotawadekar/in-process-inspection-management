@@ -1,0 +1,381 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="CertRepById" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LCMS-ADAPTER"/>
+	<query language="SQL"><![CDATA[SELECT 
+    certificate_tb.cert_id,
+    certificate_tb.r1,
+    certificate_tb.r2,
+    certificate_tb.r3,
+    certificate_tb.nominal_size,
+    certificate_tb.observed_size,
+    certificate_tb.error_size,
+    gaugemaster_tb.gauge_id,
+    gaugemaster_tb.gauge_name,
+    gaugemaster_tb.gauge_type,
+    gaugemaster_tb.gauge_sr_no,
+    gaugemaster_tb.size,
+    datasheet_tb.datasheet_id,
+    datasheet_tb.calibration_date,
+    datasheet_tb.next_calibration_date,
+    datasheet_tb.ref_dc_no,
+    datasheet_tb.date_of_reciept,
+    datasheet_tb.issue_date,
+    datasheet_tb.certificate_no,
+    datasheet_tb.calibration_place,
+    datasheet_tb.identification_marked_by,
+    employee_tb.emp_id,
+    employee_tb.first_name,
+    employee_tb.last_name,
+    employee_tb.designation,
+    employee_tb.signature,
+    customer_tb.cust_id,
+    customer_tb.customer_name,
+    customer_tb.adderss,
+    customer_tb.logo
+FROM 
+    certificate_tb
+LEFT JOIN gaugemaster_tb ON certificate_tb.gauge_id = gaugemaster_tb.gauge_id
+LEFT JOIN datasheet_tb ON certificate_tb.datasheet_id = datasheet_tb.datasheet_id
+LEFT JOIN employee_tb ON certificate_tb.emp_id = employee_tb.emp_id
+LEFT JOIN customer_tb ON certificate_tb.cust_id = customer_tb.cust_id
+WHERE 
+    certificate_tb.cert_id = certificate_tb.cert_id]]></query>
+	<field name="cert_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cert_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cert_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r1"/>
+		<property name="com.jaspersoft.studio.field.label" value="r1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r2"/>
+		<property name="com.jaspersoft.studio.field.label" value="r2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r3"/>
+		<property name="com.jaspersoft.studio.field.label" value="r3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="nominal_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="observed_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="error_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="gauge_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_sr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_sr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_sr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="size"/>
+		<property name="com.jaspersoft.studio.field.label" value="size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="datasheet_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="calibration_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="next_calibration_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="next_calibration_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="next_calibration_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="ref_dc_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ref_dc_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="ref_dc_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="date_of_reciept" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_of_reciept"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_of_reciept"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="issue_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="issue_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="issue_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="certificate_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="certificate_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="certificate_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="calibration_place" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="calibration_place"/>
+		<property name="com.jaspersoft.studio.field.label" value="calibration_place"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="identification_marked_by" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="identification_marked_by"/>
+		<property name="com.jaspersoft.studio.field.label" value="identification_marked_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="emp_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="designation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="designation"/>
+		<property name="com.jaspersoft.studio.field.label" value="designation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="signature" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="cust_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cust_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cust_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="customer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="adderss" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="adderss"/>
+		<property name="com.jaspersoft.studio.field.label" value="adderss"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="logo" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="logo"/>
+		<property name="com.jaspersoft.studio.field.label" value="logo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<group name="cert_id">
+		<expression><![CDATA[$F{cert_id}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="image" uuid="2055a66f-c448-49f5-9444-2cd535c108d5" x="0" y="0" width="555" height="79">
+			<expression><![CDATA["F:/Parth/Parth Important Workspace/Java Full Stack/ReactJS-Springboot/AQS_LCMS/lcms_backend/Images/Letter_Head.jpg"]]></expression>
+			<box>
+				<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+			</box>
+		</element>
+	</title>
+	<detail>
+		<band height="571" splitType="Stretch">
+			<element kind="textField" uuid="249817ee-e3a7-4096-8eac-742ddd7b5bf0" x="31" y="43" width="55" height="30" hTextAlign="Left">
+				<expression><![CDATA[$F{gauge_name}]]></expression>
+			</element>
+			<element kind="rectangle" uuid="635a9e29-a27e-49e2-91a3-cc1f719cc17a" mode="Opaque" x="1" y="30" width="555" height="285" backcolor="#FCFCFC"/>
+			<element kind="textField" uuid="e258a95b-620e-46e0-89ef-ecac8ed17e5c" x="107" y="113" width="141" height="14" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{gauge_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="dc80461c-3a08-414c-86af-0f6cb06f6d73" x="107" y="132" width="138" height="14" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{gauge_sr_no}]]></expression>
+			</element>
+			<element kind="textField" uuid="f7298db1-3a44-4627-a2b8-73e207b01fa5" x="76" y="150" width="138" height="14" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{size}]]></expression>
+			</element>
+			<element kind="staticText" uuid="0e55513d-02d9-4c98-95dc-a5ec3a0071c9" x="5" y="113" width="100" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Gauge Description:      ]]></text>
+			</element>
+			<element kind="staticText" uuid="f74d6799-9c2b-46bc-85e0-4dc6ac98268d" x="4" y="150" width="70" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Size/ Range:]]></text>
+			</element>
+			<element kind="textField" uuid="08a45fc4-3c04-496c-bbd1-6d2962d095fd" x="390" y="85" width="79" height="20" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{issue_date}]]></expression>
+			</element>
+			<element kind="textField" uuid="4fb55849-3f81-424d-81ab-a01759661fe0" x="76" y="170" width="149" height="14" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{identification_marked_by}]]></expression>
+			</element>
+			<element kind="staticText" uuid="42a29cb3-bb57-4336-b84f-3959f7730810" x="4" y="170" width="70" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Identification:  ]]></text>
+			</element>
+			<element kind="textField" uuid="993d24b9-1786-4e17-8bd5-807bd3abdda8" x="390" y="173" width="118" height="16" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{calibration_place}]]></expression>
+			</element>
+			<element kind="staticText" uuid="cce23443-b43d-4d32-ae83-1609d73f7b04" x="285" y="173" width="100" height="17" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<text><![CDATA[Calibrated At: ]]></text>
+			</element>
+			<element kind="staticText" uuid="e5a7ac84-4200-47b0-a06d-be7476806c3c" x="285" y="85" width="100" height="20" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Top">
+				<text><![CDATA[Date:]]></text>
+			</element>
+			<element kind="staticText" uuid="9a650545-2b9b-486b-8d1e-e2ecb1c4caad" x="285" y="153" width="100" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<text><![CDATA[Next Due Date:  ]]></text>
+			</element>
+			<element kind="line" uuid="bbbc771c-e986-43da-bc89-d8f8b61f9ad5" x="281" y="31" width="1" height="283">
+				<pen lineStyle="Solid"/>
+			</element>
+			<element kind="line" uuid="0e2277ba-cb2d-4598-a23a-0c18d72064a7" x="1" y="108" width="555" height="1"/>
+			<element kind="staticText" uuid="91b630be-d752-4174-9cf5-d4623cda8768" x="10" y="34" width="81" height="20" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Calibrated For:      ]]></text>
+			</element>
+			<element kind="textField" uuid="1f8bd85e-632f-4456-9741-90737a1c66eb" x="10" y="54" width="119" height="16" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{customer_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="305db309-0ff5-4ac9-9e2c-4607f49b5064" x="10" y="70" width="270" height="38" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{adderss}]]></expression>
+			</element>
+			<element kind="staticText" uuid="6a189fc9-1895-4c61-bbd0-2502ae696ede" x="5" y="132" width="100" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Identification No.:]]></text>
+			</element>
+			<element kind="line" uuid="b45dcc08-a5aa-48e8-b07d-37245f75595f" x="1" y="128" width="555" height="1"/>
+			<element kind="line" uuid="7d29f9e5-9c2e-4d6a-88e7-6979076cc599" x="1" y="147" width="282" height="1"/>
+			<element kind="line" uuid="175cc053-c53d-479e-8161-2ddab5fc95f6" x="1" y="167" width="281" height="1"/>
+			<element kind="staticText" uuid="4dff02ed-b8af-4bfd-ac45-48be7afff2f6" x="285" y="34" width="86" height="20" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<text><![CDATA[Certificate No.: ]]></text>
+			</element>
+			<element kind="textField" uuid="244c6645-4722-471c-9268-a69ec1c47b2c" x="371" y="34" width="100" height="20" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{certificate_no}]]></expression>
+			</element>
+			<element kind="line" uuid="0d83cb47-5359-4652-8269-6b7a7fcb51b1" x="282" y="55" width="274" height="1"/>
+			<element kind="staticText" uuid="17953de5-2c64-4377-819a-854f14294905" x="285" y="110" width="100" height="16" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<text><![CDATA[Reciept Date:  ]]></text>
+			</element>
+			<element kind="textField" uuid="159e8eb2-c477-4d1a-859f-450753baee74" x="388" y="132" width="110" height="15" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Bottom">
+				<expression><![CDATA[$F{calibration_date}]]></expression>
+			</element>
+			<element kind="textField" uuid="614c9e35-e67d-4929-8363-ad13964c1d70" x="390" y="110" width="101" height="16" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{date_of_reciept}]]></expression>
+			</element>
+			<element kind="staticText" uuid="8bae8041-ec55-4d92-9fa0-17713daa53c4" x="285" y="132" width="100" height="15" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Bottom">
+				<text><![CDATA[Calibration Date:  ]]></text>
+			</element>
+			<element kind="textField" uuid="71beb6df-833a-4321-bf7c-2a6ca1fa437d" x="390" y="60" width="79" height="20" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{ref_dc_no}]]></expression>
+			</element>
+			<element kind="staticText" uuid="aa585e06-d8d6-4eec-b34b-fd0069a98777" x="285" y="60" width="100" height="20" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Top">
+				<text><![CDATA[Reference Dc. No. :  ]]></text>
+			</element>
+			<element kind="textField" uuid="5d1e5f78-981b-4edc-9833-4938b4c65e5e" x="389" y="153" width="119" height="14" hTextAlign="Left" vTextAlign="Top">
+				<expression><![CDATA[$F{next_calibration_date}]]></expression>
+			</element>
+			<element kind="line" uuid="b6502715-5b75-4fd1-a0e1-f36326f0bca7" x="1" y="190" width="555" height="1"/>
+			<element kind="staticText" uuid="533008d9-861f-4953-8a4b-e73993991fb7" x="5" y="194" width="186" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Condition of instrument at reciept: ]]></text>
+			</element>
+			<element kind="staticText" uuid="65d242da-6c32-449e-9b51-1450355b212c" x="285" y="195" width="173" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Identification Marked By RML:]]></text>
+			</element>
+			<element kind="line" uuid="9aa68e0d-c343-4f9f-a7ee-8a9061a82713" x="281" y="212" width="275" height="1"/>
+			<element kind="line" uuid="4a6dd6ce-6e8b-4faf-b995-6cf84af0380b" x="1" y="212" width="280" height="1"/>
+			<element kind="staticText" uuid="dfd3612a-1180-4773-9e49-0feded09c285" x="5" y="216" width="76" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Test Purpose : ]]></text>
+			</element>
+			<element kind="line" uuid="053edb46-fef8-459c-bc2b-75ebfe16a83f" x="1" y="234" width="280" height="1"/>
+			<element kind="line" uuid="070f32d0-c600-40fe-9aea-94653c4b2440" x="2" y="256" width="280" height="1"/>
+			<element kind="staticText" uuid="6a4f6c5a-9a3d-4a65-a4dc-24c2f9f812be" x="5" y="239" width="136" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[Calibration Method No. :]]></text>
+			</element>
+			<element kind="staticText" uuid="8655daca-5ec6-43bf-a15a-ed6087ad71a3" x="5" y="258" width="191" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Left" vTextAlign="Bottom">
+				<text><![CDATA[Calibration Carried Out At °C/ Rh : ]]></text>
+			</element>
+			<element kind="staticText" uuid="4b7ef453-0d46-413a-8d4d-93efc0eccdce" x="133" y="10" width="180" height="14" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Calibration Certificate Report Of:]]></text>
+			</element>
+			<element kind="textField" uuid="da4c242a-0102-4d1a-ac26-e9bc83eb5dc4" x="313" y="10" width="141" height="14" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<expression><![CDATA[$F{gauge_name}]]></expression>
+			</element>
+			<element kind="rectangle" uuid="4bc1138d-3924-4a09-b7b6-c58c9626f168" x="0" y="350" width="555" height="190"/>
+			<element kind="staticText" uuid="e9752adc-5564-4441-a4b0-efae908e295b" mode="Opaque" x="14" y="364" width="180" height="20" forecolor="#FFFFFF" backcolor="#666666" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Nominal SIze in (mm)]]></text>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="staticText" uuid="7417a207-cffe-483b-a8b8-4371fd8f27e9" mode="Opaque" x="194" y="364" width="183" height="20" forecolor="#FFFFFF" backcolor="#666666" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Observed Size in (mm)]]></text>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="staticText" uuid="4ed6d089-0a69-41a7-9ff1-164942efcfba" mode="Opaque" x="377" y="364" width="161" height="20" forecolor="#FFFFFF" backcolor="#666666" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Error in (mm)]]></text>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="603b0189-70e2-40fa-8e53-7e95774a7c48" x="16" y="386" width="178" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{nominal_size}]]></expression>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="2ce06b52-41f1-42c2-bb7e-f99da4a757f8" x="196" y="386" width="181" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{observed_size}]]></expression>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="b6249a7e-3c44-40d1-9390-0f5af79762e7" x="377" y="386" width="161" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{error_size}]]></expression>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

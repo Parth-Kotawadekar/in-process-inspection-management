@@ -1,0 +1,45 @@
+package com.api_lcms.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.api_lcms.model.Authority;
+import com.api_lcms.service.AuthorityService;
+
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
+public class AuthorityController {
+
+	@Autowired
+	private AuthorityService authorityService;
+
+	@PostMapping("/assign")
+	public Authority assignAuthority(Integer emp_id, @RequestParam Integer auth_id) {
+		return authorityService.assignAuthorityToEmployee(emp_id, auth_id, null);
+	}
+
+	@PostMapping("/revoke")
+	public Authority revokeAuthority(@RequestParam Integer emp_id, @RequestParam Integer auth_id) {
+		return authorityService.revokeAuthorityFromEmployee(emp_id, auth_id);
+	}
+	
+	@GetMapping
+    public List<Authority> getAllAuthorities() {
+        return authorityService.getAllAuthorities();
+    }
+
+    @GetMapping("/{employeeId}")
+    public List<Authority> getEmployeeAuthorities(@PathVariable Integer employeeId) {
+        return authorityService.getEmployeeAuthorities(employeeId);
+    }
+
+    @PutMapping("/{employeeId}")
+    public void updateEmployeeAuthorities(@PathVariable Integer employeeId, @RequestBody List<AuthorityDTO> authorities) {
+        authorityService.updateEmployeeAuthorities(employeeId, authorities);
+    }
+}

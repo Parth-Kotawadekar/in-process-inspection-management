@@ -1,0 +1,9 @@
+package com.api_lcms.dto;
+
+public class AuthorityDTO {
+	
+	private Integer id;
+	private String description;
+	private String status;
+	
+}

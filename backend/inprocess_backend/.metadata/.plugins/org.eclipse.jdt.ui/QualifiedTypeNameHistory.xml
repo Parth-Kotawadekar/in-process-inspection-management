@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="com.lowagie.text.List"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="com.api_lcms.dto.DatasheetDTO"/>
+    <fullyQualifiedTypeName name="com.api_lcms.model.Datasheet"/>
+    <fullyQualifiedTypeName name="org.antlr.v4.runtime.atn.SemanticContext.AND"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.api_lcms.controller.EmployeeController"/>
+    <fullyQualifiedTypeName name="com.api_lcms.model.Employee"/>
+    <fullyQualifiedTypeName name="com.api_lcms.model.Customer"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="com.api_lcms.service.CustomerService"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.api_lcms.model.Authority"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.api_lcms.dto.AuthorityDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.api_lcms.service.EmployeeService"/>
+</qualifiedTypeNameHistroy>

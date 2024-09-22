@@ -1,0 +1,52 @@
+package com.api_lcms.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api_lcms.model.Authority;
+import com.api_lcms.model.Employee;
+import com.api_lcms.repository.AuthorityRepository;
+import com.api_lcms.repository.EmployeeRepository;
+
+@Service
+public class AuthorityService {
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    public List<Authority> assignAuthorityToEmployee(Integer emp_id, List<AuthorityDTO> authorityDTOs) {
+        Employee employee = employeeRepository.findById(emp_id)
+                .orElseThrow(() -> new RuntimeException("Employee Id Not Found"));
+        
+        List<Authority> authorities = new ArrayList<>();
+        for (AuthorityDTO dto : authorityDTOs) {
+            Authority authority = new Authority();
+            authority.setEmployee(employee);
+            authority.setId(dto.getAuthorityId());
+            authority.setStatus(dto.getStatus());
+            authorities.add(authorityRepository.save(authority));
+        }
+        return authorities;
+    }
+
+    public Authority revokeAuthorityFromEmployee(Integer emp_id, Integer auth_id) {
+        Optional<Authority> authorityOpt = authorityRepository.findById(auth_id);
+
+        if (authorityOpt.isPresent()) {
+            Authority authority = authorityOpt.get();
+            if (authority.getEmployee() != null && authority.getEmployee().getEmp_id().equals(emp_id)) {
+                authority.setEmployee(null);
+                authority.setStatus("revoked"); // Set status to indicate revocation
+                authorityRepository.save(authority);
+            }
+        }
+        return null;
+    }
+}

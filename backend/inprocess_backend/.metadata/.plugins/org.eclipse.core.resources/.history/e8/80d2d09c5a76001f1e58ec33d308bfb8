@@ -1,0 +1,43 @@
+package com.api_lcms.service;
+
+import com.api_lcms.dto.AuthorityDTO;
+import com.api_lcms.model.Authority;
+import com.api_lcms.model.Employee;
+import com.api_lcms.repository.AuthorityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AuthorityService {
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
+
+    @Autowired
+    private EmployeeService employeeService; // Service to fetch employee details
+
+    public List<Authority> getAllAuthorities() {
+        return authorityRepository.findAll();
+    }
+
+    public List<Authority> getEmployeeAuthorities(Integer emp_id) {
+        return authorityRepository.findByEmployeeId(emp_id);
+    }
+
+    public void updateEmployeeAuthorities(Integer employeeId, List<AuthorityDTO> authorities) {
+        // Remove existing authorities for the employee
+        authorityRepository.deleteByEmployeeId(employeeId);
+
+        // Save new authorities
+        for (AuthorityDTO dto : authorities) {
+            Authority authority = new Authority();
+            Employee employee = employeeService.getEmployeeById(employeeId); // Fetch employee
+            authority.setEmployee(employee);
+            authority.setDescription(dto.getDescription());
+            authority.setStatus(dto.getStatus());
+            authorityRepository.save(authority);
+        }
+    }
+}

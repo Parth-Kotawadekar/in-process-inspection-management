@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="incoming_inspection_final_report" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f6b11e82-1324-4d36-8840-7ea30eddf609">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AAQRUSH_QUALITY_SERVICES"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+      certificate_tb.cert_id,
+      certificate_tb.nine_thirty, 
+      certificate_tb.ten_thirty, 
+      certificate_tb.twelve_thirty, 
+      certificate_tb.two_thirty, 
+      certificate_tb.four_thirty, 
+      certificate_tb.six_thirty, 
+      certificate_tb.result,
+      certificate_tb.prod_plan_qty, 
+      certificate_tb.act_prod_qty, 
+      certificate_tb.rework_qty, 
+      certificate_tb.reject_qty, 
+      certificate_tb.error_size, 
+      certificate_tb.mean, 
+      certificate_tb.nominal_size, 
+      certificate_tb.observed_size, 
+      certificate_tb.r1, 
+      certificate_tb.r2, 
+      certificate_tb.r3, 
+      certificate_tb.r4, 
+      certificate_tb.datasheet_id, 
+      certificate_tb.gauge_id, 
+      certificate_tb.gauge_inst, 
+      certificate_tb.product_char, 
+      certificate_tb.special_char,      
+      certificate_tb.nominal_size,
+      certificate_tb.observed_size,
+      certificate_tb.error_size,
+      gaugemaster_tb.gauge_id,
+      gaugemaster_tb.gauge_name,
+      gaugemaster_tb.gauge_type,
+      gaugemaster_tb.gauge_sr_no,
+      gaugemaster_tb.size,
+      gaugemaster_tb.least_count,
+      gaugemaster_tb.manufacture_id,
+      gaugemaster_tb.make,
+      datasheet_tb.datasheet_id,
+      datasheet_tb.calibration_date,
+      datasheet_tb.next_calibration_date,
+      datasheet_tb.ref_dc_no,
+      datasheet_tb.date_of_reciept,  -- corrected from \"date_of_reciept\"
+      datasheet_tb.issue_date,
+      datasheet_tb.certificate_no,
+      datasheet_tb.calibration_place,
+      datasheet_tb.identification_marked_by,
+      employee_tb.emp_id,
+      employee_tb.first_name,
+      employee_tb.last_name,
+      employee_tb.designation,
+      employee_tb.signature,
+      customer_tb.cust_id,
+      customer_tb.customer_name,
+      customer_tb.adderss,
+      customer_tb.logo,
+      combined_master_1_tb.rep_id,
+      combined_master_1_tb.rep_sr_no,
+      combined_master_1_tb.condition_description,
+      combined_master_1_tb.test_purpose,
+      combined_master_1_tb.method_number,
+      combined_master_1_tb.method_description,
+      combined_master_1_tb.gauge_type,
+      combined_master_1_tb.size,
+      combined_master_1_tb.equipment_description,
+      combined_master_1_tb.equipment_sr_no,
+      combined_master_1_tb.calibration_date,
+      combined_master_1_tb.equipment_description,
+      combined_master_1_tb.validity_date,
+      combined_master_2_tb.check_id,
+      combined_master_2_tb.check_ddm
+            		FROM
+      certificate_tb
+            		LEFT JOIN gaugemaster_tb ON certificate_tb.gauge_id = gaugemaster_tb.gauge_id
+            		LEFT JOIN datasheet_tb ON certificate_tb.datasheet_id = datasheet_tb.datasheet_id
+            		LEFT JOIN employee_tb ON gaugemaster_tb.emp_id = employee_tb.emp_id
+            		LEFT JOIN customer_tb ON gaugemaster_tb.cust_id = customer_tb.cust_id
+            		LEFT JOIN combined_master_1_tb ON gaugemaster_tb.rep_id = combined_master_1_tb.rep_id
+                    LEFT JOIN combined_master_2_tb ON gaugemaster_tb.check_id = combined_master_2_tb.check_id
+            		WHERE
+      certificate_tb.cert_id = 18]]>
+	</queryString>
+	<field name="cert_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cert_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cert_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="nine_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nine_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="nine_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="ten_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ten_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="ten_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="twelve_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="twelve_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="twelve_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="two_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="two_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="two_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="four_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="four_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="four_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="six_thirty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="six_thirty"/>
+		<property name="com.jaspersoft.studio.field.label" value="six_thirty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="result" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="result"/>
+		<property name="com.jaspersoft.studio.field.label" value="result"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="prod_plan_qty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prod_plan_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="prod_plan_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="act_prod_qty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="act_prod_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="act_prod_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="rework_qty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rework_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="rework_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="reject_qty" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="reject_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="reject_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="error_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="mean" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mean"/>
+		<property name="com.jaspersoft.studio.field.label" value="mean"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="nominal_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="observed_size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r1"/>
+		<property name="com.jaspersoft.studio.field.label" value="r1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r2"/>
+		<property name="com.jaspersoft.studio.field.label" value="r2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r3"/>
+		<property name="com.jaspersoft.studio.field.label" value="r3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="r4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="r4"/>
+		<property name="com.jaspersoft.studio.field.label" value="r4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="datasheet_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="gauge_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="gauge_inst" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_inst"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_inst"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="product_char" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="product_char"/>
+		<property name="com.jaspersoft.studio.field.label" value="product_char"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="special_char" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="special_char"/>
+		<property name="com.jaspersoft.studio.field.label" value="special_char"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="COLUMN_26" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="nominal_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="COLUMN_27" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="observed_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="COLUMN_28" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.label" value="error_size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="certificate_tb"/>
+	</field>
+	<field name="COLUMN_29" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_type" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="gauge_sr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_sr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_sr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="size" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="size"/>
+		<property name="com.jaspersoft.studio.field.label" value="size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="least_count" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="least_count"/>
+		<property name="com.jaspersoft.studio.field.label" value="least_count"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="manufacture_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="manufacture_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="manufacture_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="make" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="make"/>
+		<property name="com.jaspersoft.studio.field.label" value="make"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="gaugemaster_tb"/>
+	</field>
+	<field name="COLUMN_37" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="datasheet_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="calibration_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="next_calibration_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="next_calibration_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="next_calibration_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="ref_dc_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ref_dc_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="ref_dc_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="date_of_reciept" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_of_reciept"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_of_reciept"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="issue_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="issue_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="issue_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="certificate_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="certificate_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="certificate_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="calibration_place" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="calibration_place"/>
+		<property name="com.jaspersoft.studio.field.label" value="calibration_place"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="identification_marked_by" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="identification_marked_by"/>
+		<property name="com.jaspersoft.studio.field.label" value="identification_marked_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datasheet_tb"/>
+	</field>
+	<field name="emp_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="designation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="designation"/>
+		<property name="com.jaspersoft.studio.field.label" value="designation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="signature" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="signature"/>
+		<property name="com.jaspersoft.studio.field.label" value="signature"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee_tb"/>
+	</field>
+	<field name="cust_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cust_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cust_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="customer_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="customer_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="adderss" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="adderss"/>
+		<property name="com.jaspersoft.studio.field.label" value="adderss"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="logo" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="logo"/>
+		<property name="com.jaspersoft.studio.field.label" value="logo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="customer_tb"/>
+	</field>
+	<field name="rep_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="rep_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="rep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="rep_sr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="rep_sr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="rep_sr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="condition_description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="condition_description"/>
+		<property name="com.jaspersoft.studio.field.label" value="condition_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="test_purpose" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="test_purpose"/>
+		<property name="com.jaspersoft.studio.field.label" value="test_purpose"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="method_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="method_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="method_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="method_description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="method_description"/>
+		<property name="com.jaspersoft.studio.field.label" value="method_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="COLUMN_61" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.label" value="gauge_type"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="COLUMN_62" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="size"/>
+		<property name="com.jaspersoft.studio.field.label" value="size"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="equipment_description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="equipment_description"/>
+		<property name="com.jaspersoft.studio.field.label" value="equipment_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="equipment_sr_no" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="equipment_sr_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="equipment_sr_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="COLUMN_65" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="calibration_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="COLUMN_66" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="equipment_description"/>
+		<property name="com.jaspersoft.studio.field.label" value="equipment_description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="validity_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="validity_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="validity_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_1_tb"/>
+	</field>
+	<field name="check_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="check_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="check_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_2_tb"/>
+	</field>
+	<field name="check_ddm" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="check_ddm"/>
+		<property name="com.jaspersoft.studio.field.label" value="check_ddm"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="combined_master_2_tb"/>
+	</field>
+	<group name="cert_id">
+		<groupExpression><![CDATA[$F{cert_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="469" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-6" y="204" width="138" height="40" forecolor="#FFFFFF" backcolor="#003366" uuid="14e40c6e-318a-4217-abe1-e2ea2362524d"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product Characteristic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="132" y="204" width="138" height="40" forecolor="#FFFFFF" backcolor="#003366" uuid="5aaade6e-5c11-435d-b37d-6bd910c64ed4"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Spec. Char Symbol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="270" y="204" width="130" height="40" forecolor="#FFFFFF" backcolor="#003366" uuid="e9a135ed-0b27-42e6-9466-8a5be5e37fef"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gauge / Instrument]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="204" width="297" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="9e0c99b5-3fc4-43a4-92a2-413601197076"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="697" y="204" width="110" height="40" forecolor="#FFFFFF" backcolor="#003366" uuid="833f9016-a67d-4896-9aee-559a7853a2fa"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Result (OK/NOT OK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="224" width="53" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="74b80d88-a58c-4735-8a2e-c25db250cab2"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="453" y="224" width="50" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="aa2de440-1266-4d6c-b51a-2c3177986c77"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="503" y="224" width="60" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="053b60e0-0278-4c33-b5ca-6ad7597e5fba"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="563" y="224" width="64" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="f64a05c9-c8a3-478a-a840-522406be1e24"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="627" y="224" width="70" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="692ff4f4-36fc-40e5-98b5-e40d511f6607"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="132" y="244" width="138" height="157" uuid="355eb6c6-7daa-48b7-9cff-f9b9da6f30c0"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{special_char}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-6" y="244" width="138" height="157" uuid="7a58b756-d713-4a16-af71-314ef34b7ef5"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{product_char}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="244" width="130" height="157" uuid="5cb88c86-0831-4a3f-b4c0-db83ab7da47e"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gauge_inst}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="244" width="53" height="157" uuid="9d874047-bad9-4e65-9ae0-0b3209fcdb09"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nine_thirty}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="244" width="50" height="158" uuid="5868feba-dca6-462d-a8dd-50c52bf3bc16"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ten_thirty}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="503" y="244" width="60" height="157" uuid="cbcacd41-bc08-4bfd-aabf-c80240305421"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{twelve_thirty}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="563" y="244" width="64" height="157" uuid="69e15978-60d2-45d5-a69c-c91b46e2aae8"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{two_thirty}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="627" y="244" width="70" height="157" uuid="c319f44b-08a4-43eb-b794-8f7d61887fb0"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{four_thirty}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="697" y="244" width="110" height="157" uuid="9cf5d4f6-abc6-4f0d-b14c-47a9e05beaf1"/>
+				<box>
+					<pen lineColor="#030303"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{result}.replace(",", "\n")]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-6" y="20" width="813" height="175" uuid="e81bf8b8-cdcf-4867-8d05-ea521f76beda"/>
+			</rectangle>
+			<line>
+				<reportElement x="-6" y="110" width="813" height="1" uuid="93bb7a88-6789-4090-b698-cc3eca2d9d4c"/>
+			</line>
+			<line>
+				<reportElement x="-6" y="172" width="813" height="1" uuid="47fef21c-6448-4b21-844b-640725abfbfb"/>
+			</line>
+			<line>
+				<reportElement x="-6" y="130" width="814" height="1" uuid="2e75245d-dfd3-4893-ab77-c95fd5b6cde4"/>
+			</line>
+			<line>
+				<reportElement x="-7" y="151" width="814" height="1" uuid="46918d32-24aa-4593-a793-7541cfbc106c"/>
+			</line>
+			<line>
+				<reportElement x="400" y="111" width="1" height="84" uuid="f24493c9-c9f1-471c-afc6-51d3a546d810"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="172" width="100" height="20" uuid="9ba39173-23b0-4288-bd82-81c57136c9aa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Part Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="151" width="100" height="21" uuid="41d3e3f8-ae36-445c-a128-4e110a8d84df"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Part Sr. No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="151" width="100" height="21" uuid="711c6e30-602c-499a-ac61-0bbdb5c0d3aa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Part Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="67" y="154" width="130" height="17" uuid="af47b9da-e855-4118-ab9f-dfdbbdde6df2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gauge_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="152" width="86" height="20" uuid="867f8523-a9af-4fb6-8ab0-5e5d26983b50"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gauge_sr_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="115" y="80" width="538" height="30" forecolor="#003366" uuid="03120d85-51ce-487a-a583-eb66ee53b70b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INCOMING INSPECTION REPORT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-6" y="80" width="812" height="1" uuid="4e91a6e5-c1df-438e-8de8-4ce9c89c1ef6"/>
+			</line>
+			<staticText>
+				<reportElement x="410" y="173" width="100" height="21" uuid="2bb92797-21e4-4fd5-ae3d-0d9e2c30cc1a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of Inspection:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="518" y="172" width="139" height="23" uuid="02625727-f4b6-44bb-b0b9-d7f9f0f5f3ed"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy/MM/dd").format($F{calibration_date})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="110" width="119" height="20" uuid="f0624588-2f12-482d-9875-5e3f5481a07f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name of Organization: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="670" y="80" width="1" height="30" uuid="4c9e5af0-22a5-47b2-ad34-7f6e945bd7a8"/>
+			</line>
+			<line>
+				<reportElement x="670" y="96" width="136" height="1" uuid="6129f3b4-2ea1-4128-835a-9e1487e2d597"/>
+			</line>
+			<textField>
+				<reportElement x="120" y="36" width="551" height="30" uuid="60c08ef2-67e1-41a9-b031-d8968228bd8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_name}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-6" y="401" width="356" height="39" uuid="61c1872d-ac06-4664-8406-f8000a2e29e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="350" y="401" width="277" height="39" uuid="20d3fa4b-7f2e-46ec-acdd-c2e44192af9a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="627" y="401" width="180" height="39" uuid="966559e8-b5f3-4f9f-bdf4-2678d30ee545"/>
+			</rectangle>
+			<line>
+				<reportElement x="-6" y="420" width="356" height="1" uuid="80af67c3-d2de-4035-ba48-94f188757a45"/>
+			</line>
+			<staticText>
+				<reportElement x="632" y="401" width="48" height="19" uuid="9045c72e-e1b6-4092-bf4a-f0f154987580"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[QA Sign:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="401" width="53" height="19" uuid="a6a61295-ea30-4060-8592-5b6975421933"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Remark:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="401" width="160" height="19" uuid="f181c865-4e18-4d56-aa88-2e28d8ea51dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Note - Refer sampling plan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="420" width="53" height="19" uuid="82bf609f-0f48-45a0-afd2-509484726335"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Decision]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="130" width="119" height="20" uuid="5886ef73-09d9-4692-9d86-192d31868c0c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Challan No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="110" width="119" height="20" uuid="55cb701c-8bd5-4b7e-b129-1f7296980a8e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Invoice No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="130" width="119" height="20" uuid="0e4c454a-3fa2-4a1b-ae4d-31fded5810c4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Part Drawing no.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="671" y="80" width="59" height="16" uuid="deaf184d-b920-44a5-9bcd-a90365cacc8a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOC. No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="671" y="97" width="59" height="13" uuid="8ea43090-c464-453b-a4c6-1c2184e66648"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REV. No:]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

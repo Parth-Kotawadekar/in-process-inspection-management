@@ -1,0 +1,179 @@
+package com.api_lcms.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Service;
+
+import com.api_lcms.dto.GaugeMasterDTO;
+import com.api_lcms.dto.UserDTO;
+import com.api_lcms.model.CombinedMaster_1;
+import com.api_lcms.model.Combined_Master_2;
+import com.api_lcms.model.Customer;
+import com.api_lcms.model.Employee;
+import com.api_lcms.model.GaugeMaster;
+import com.api_lcms.model.User;
+import com.api_lcms.repository.CombinedMaster1Repository;
+import com.api_lcms.repository.Combined_Master_2_Repository;
+import com.api_lcms.repository.CustomerRepository;
+import com.api_lcms.repository.EmployeeRepository;
+import com.api_lcms.repository.GaugeMasterRepository;
+import com.api_lcms.repository.UserRepository;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
+@Service
+public class GaugeMasterService {
+
+	@Autowired
+	private GaugeMasterRepository gaugeRepo;
+
+	@Autowired
+	private CombinedMaster1Repository repRepository;
+
+	@Autowired
+	private Combined_Master_2_Repository checkRepository;
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+
+	public List<GaugeMaster> getAllGaugeMasters(){
+		return gaugeRepo.findAll();
+	}
+
+	public GaugeMaster getGaugeById(Integer id) {
+		return gaugeRepo.findById(id).orElse(null);
+	}
+
+	public GaugeMaster saveGaugeMaster(GaugeMasterDTO gaugeMasterDTO, HttpServletResponse response,
+            HttpServletRequest request, HttpSession session) throws IOException {
+	    try {
+//	        Integer empId = (Integer) session.getAttribute("emp_id");
+//	        Integer custId = (Integer) session.getAttribute("cust_id");
+//	
+//	        // Log for debugging
+//	        System.out.println("Retrieved from session - Employee ID: " + empId);
+//	        System.out.println("Retrieved from session - Customer ID: " + custId);
+//	
+//	        if (empId == null || custId == null) {
+//	            throw new IllegalArgumentException("Employee ID or Customer ID is missing in session");
+//	        }
+	
+	        CombinedMaster_1 repMaster = repRepository.findById(gaugeMasterDTO.getRep_id()).orElse(null);
+	        Combined_Master_2 checkMaster = checkRepository.findById(gaugeMasterDTO.getCheck_id()).orElse(null);
+	        Employee employee = employeeRepository.findById(gaugeMasterDTO.getEmp_id()).orElse(null);
+	        Customer customer = customerRepository.findById(gaugeMasterDTO.getCust_id()).orElse(null);
+	
+	        // Log for debugging
+	        System.out.println("RepMaster: " + repMaster);
+	        System.out.println("CheckMaster: " + checkMaster);
+	        System.out.println("Employee: " + employee);
+	        System.out.println("Customer: " + customer);
+	
+	        GaugeMaster gaugeMaster = new GaugeMaster();
+	        gaugeMaster.setGauge_id(gaugeMasterDTO.getGauge_id());
+	        gaugeMaster.setGauge_name(gaugeMasterDTO.getGauge_name());
+	        gaugeMaster.setGauge_sr_no(gaugeMasterDTO.getGauge_sr_no());
+	        gaugeMaster.setGauge_type(gaugeMasterDTO.getGauge_type());
+	        gaugeMaster.setManufacture_id(gaugeMasterDTO.getManufacture_id());
+	        gaugeMaster.setSize(gaugeMasterDTO.getSize());
+	        gaugeMaster.setLeast_count(gaugeMasterDTO.getLeast_count());
+	        gaugeMaster.setGauge_range(gaugeMasterDTO.getGauge_range());
+	        gaugeMaster.setMake(gaugeMasterDTO.getMake());
+	        gaugeMaster.setGo_tolerance_minus(gaugeMasterDTO.getGo_tolerance_minus());
+	        gaugeMaster.setGo_tolerance_plus(gaugeMasterDTO.getGo_tolerance_plus());
+	        gaugeMaster.setGo_were_limit(gaugeMasterDTO.getGo_were_limit());
+	        gaugeMaster.setHigher_size(gaugeMasterDTO.getHigher_size());
+	        gaugeMaster.setInstrument_type(gaugeMasterDTO.getInstrument_type());
+	        gaugeMaster.setLower_size(gaugeMasterDTO.getLower_size());
+	        gaugeMaster.setNogo_tolerance_minus(gaugeMasterDTO.getNogo_tolerance_minus());
+	        gaugeMaster.setNogo_tolerance_pus(gaugeMasterDTO.getNogo_tolerance_pus());
+	        gaugeMaster.setTolerance_type(gaugeMasterDTO.getTolerance_type());
+	        gaugeMaster.setCust_acc_crit(gaugeMasterDTO.getCust_acc_crit());
+	        gaugeMaster.setFile(gaugeMasterDTO.getFile());
+	        gaugeMaster.setRepMaster(repMaster);
+	        gaugeMaster.setChechMaster(checkMaster);
+	        gaugeMaster.setEmployee(employee);
+	        gaugeMaster.setCustomer(customer);
+	
+	        return gaugeRepo.save(gaugeMaster);
+	    } catch (Exception e) {
+	        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	        response.getWriter().write("Cannot Add New Gauge: " + e.getMessage());
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
+
+
+
+
+	public GaugeMaster updateGaueGaugeMaster(GaugeMasterDTO gauge, Integer id, HttpServletResponse response) throws IOException {
+
+		try {
+			GaugeMaster existingGaugeMaster = gaugeRepo.findById(id).orElse(null);
+			Combined_Master_2 checkMaster = checkRepository.findById(gauge.getCheck_id()).orElse(null);
+			CombinedMaster_1 repMaster = repRepository.findById(gauge.getRep_id()).orElse(null);
+//			Customer customer = customerRepository.findById(gauge.getCust_id()).orElse(null);
+//			Employee employee = employeeRepository.findById(gauge.getEmp_id()).orElse(null);
+
+				if(existingGaugeMaster != null) {
+					existingGaugeMaster.setGauge_name(gauge.getGauge_name());
+					existingGaugeMaster.setGauge_sr_no(gauge.getGauge_sr_no());
+					existingGaugeMaster.setGauge_type(gauge.getGauge_type());
+					existingGaugeMaster.setSize(gauge.getSize());
+					existingGaugeMaster.setLeast_count(gauge.getLeast_count());
+					existingGaugeMaster.setGauge_range(gauge.getGauge_range());
+					existingGaugeMaster.setManufacture_id(gauge.getManufacture_id());
+					existingGaugeMaster.setMake(gauge.getMake());
+					existingGaugeMaster.setGo_tolerance_minus(gauge.getGo_tolerance_minus());
+					existingGaugeMaster.setGo_tolerance_plus(gauge.getGo_tolerance_plus());
+					existingGaugeMaster.setGo_were_limit(gauge.getGo_were_limit());
+					existingGaugeMaster.setHigher_size(gauge.getHigher_size());
+					existingGaugeMaster.setInstrument_type(gauge.getInstrument_type());
+					existingGaugeMaster.setLower_size(gauge.getLower_size());
+					existingGaugeMaster.setNogo_tolerance_minus(gauge.getNogo_tolerance_minus());
+					existingGaugeMaster.setNogo_tolerance_pus(gauge.getNogo_tolerance_pus());
+					existingGaugeMaster.setTolerance_type(gauge.getTolerance_type());
+					existingGaugeMaster.setCust_acc_crit(gauge.getCust_acc_crit());
+					existingGaugeMaster.setChechMaster(checkMaster);
+					existingGaugeMaster.setRepMaster(repMaster);
+//					existingGaugeMaster.setCustomer(customer);
+//					existingGaugeMaster.setEmployee(employee);
+
+					return gaugeRepo.save(existingGaugeMaster);
+				}
+		} catch (Exception e) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.getWriter().write("Cannot Update Gauge : \n" + "\t" + e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void deleteGauge(Integer id) {
+		gaugeRepo.deleteById(id);
+	}
+
+}

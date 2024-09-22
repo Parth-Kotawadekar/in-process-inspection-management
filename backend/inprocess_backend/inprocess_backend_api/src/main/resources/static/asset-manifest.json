@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "./static/css/main.fd6ad361.css",
+    "main.js": "./static/js/main.3cb4008e.js",
+    "static/js/453.3edddf93.chunk.js": "./static/js/453.3edddf93.chunk.js",
+    "static/media/certbtn.jpg": "./static/media/certbtn.b3cfab1b2760cda01bc7.jpg",
+    "static/media/certificate.png": "./static/media/certificate.3b37ad681b725204d061.png",
+    "static/media/part.png": "./static/media/part.3a33e2e7adc6abfe9249.png",
+    "static/media/public-relation.png": "./static/media/public-relation.4bdc6fd091dc659d11e2.png",
+    "static/media/report.png": "./static/media/report.8c5de906735c2a61247f.png",
+    "static/media/checkpoint.png": "./static/media/checkpoint.c315e76e2253f7fdc6cb.png",
+    "static/media/teamwork.png": "./static/media/teamwork.bf876c3f8f89938e9a52.png",
+    "static/media/pdf.png": "./static/media/pdf.6279a47b4effd0a7eae7.png",
+    "static/media/note-pad.png": "./static/media/note-pad.e6a607eb30dc90c3651b.png",
+    "index.html": "./index.html",
+    "main.fd6ad361.css.map": "./static/css/main.fd6ad361.css.map",
+    "main.3cb4008e.js.map": "./static/js/main.3cb4008e.js.map",
+    "453.3edddf93.chunk.js.map": "./static/js/453.3edddf93.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fd6ad361.css",
+    "static/js/main.3cb4008e.js"
+  ]
+}

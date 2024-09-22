@@ -1,0 +1,32 @@
+package com.api_lcms.controller;
+
+import com.api_lcms.dto.AuthorityDTO;
+import com.api_lcms.model.Authority;
+import com.api_lcms.service.AuthorityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/authorities")
+public class AuthorityController {
+
+    @Autowired
+    private AuthorityService authorityService;
+
+    @GetMapping
+    public List<Authority> getAllAuthorities() {
+        return authorityService.getAllAuthorities();
+    }
+
+    @GetMapping("/{emp_id}")
+    public List<Authority> getEmployeeAuthorities(@PathVariable Integer emp_id) {
+        return authorityService.getEmployeeAuthorities(emp_id);
+    }
+
+    @PutMapping("/{emp_id}")
+    public void updateEmployeeAuthorities(@PathVariable Integer employeeId, @RequestBody List<AuthorityDTO> authorities) {
+        authorityService.updateEmployeeAuthorities(employeeId, authorities);
+    }
+}
